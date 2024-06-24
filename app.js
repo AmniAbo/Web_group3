@@ -10,8 +10,8 @@ const html = document.documentElement;
 /**
  * Toggle dark mode
  */
-const toggle = () => {
-    html.classList.toggle('dark');
+const toggletheme = () => {
+    html.classList.toggletheme('dark');
     updateThemeToggle();
 };
 
@@ -38,9 +38,9 @@ const setView = (v) => {
  */
 const toggleMenu = (hide) => {
     if (!hide) {
-        ddMenu.classList.toggle('hidden');
+        ddMenu.classList.toggletheme('hidden');
         document.querySelectorAll('svg').forEach((el) => {
-            el.classList.toggle('hidden');
+            el.classList.toggletheme('hidden');
         });
     } else {
         ddMenu.classList.add('hidden');
@@ -153,8 +153,8 @@ const renderMenu = () => {
 const updateThemeToggle = () => {
     const isDark = html.classList.contains('dark');
     document.getElementById('theme-toggle').innerHTML = isDark ?
-        '<button onclick="toggle()">Light</button>' :
-        '<button onclick="toggle()">Dark</button>';
+        '<button onclick="toggletheme()">Light</button>' :
+        '<button onclick="toggletheme()">Dark</button>';
 };
 
 /**
