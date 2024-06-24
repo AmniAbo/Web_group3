@@ -94,6 +94,9 @@ const addButtons = (container, nums) => {
  * Handle button click events
  * @param {Event} event - The click event
  */
+
+
+// kk
 const click = (event) => {
     const monitor = document.getElementById('monitor');
     const bac = monitor.innerText.trim();
