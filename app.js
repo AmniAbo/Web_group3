@@ -11,9 +11,7 @@ const html = document.documentElement;
  * Toggle dark mode
  */
 const toggleTheme = () => {
-    console.log("Toggling theme");
-    html.classList.toggle('dark');
-    console.log("HTML class list:", html.classList);
+    html.classList.toggleTheme('dark');
     updateThemeToggle();
 };
 
@@ -40,9 +38,9 @@ const setView = (v) => {
  */
 const toggleMenu = (hide) => {
     if (!hide) {
-        ddMenu.classList.toggle('hidden');
+        ddMenu.classList.toggleTheme('hidden');
         sandwich.forEach((el) => {
-            el.classList.toggle('hidden');
+            el.classList.toggleTheme('hidden');
         });
     } else {
         ddMenu.classList.add('hidden');
