@@ -10,7 +10,7 @@ const html = document.documentElement; // Select HTML element
 /**
  * Toggle dark mode
  */
-const toggleTheme = () => {
+const toggle = () => {
     html.classList.toggle('dark'); // Toggle dark mode class on HTML element
     updateThemeToggle(); // Update theme toggle button
 };
@@ -155,8 +155,8 @@ const renderMenu = () => {
 const updateThemeToggle = () => {
     const isDark = html.classList.contains('dark'); // Check if dark mode is enabled
     document.getElementById('theme-toggle').innerHTML = isDark ?
-        '<button onclick="toggleTheme()">Light</button>' :
-        '<button onclick="toggleTheme()">Dark</button>'; // Update theme toggle button
+        '<button onclick="toggle()">Light</button>' :
+        '<button onclick="toggle()">Dark</button>'; // Update theme toggle button
 };
 
 /**
