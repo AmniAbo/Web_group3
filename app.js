@@ -11,7 +11,9 @@ const html = document.documentElement;
  * Toggle dark mode
  */
 const toggleTheme = () => {
+    console.log("Toggling theme");
     html.classList.toggle('dark');
+    console.log("HTML class list:", html.classList);
     updateThemeToggle();
 };
 
