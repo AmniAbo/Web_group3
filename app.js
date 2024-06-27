@@ -4,14 +4,14 @@
 const header = document.querySelector('h1');
 const app = document.getElementById('app');
 const ddMenu = document.querySelector('#ddMenu');
-const sandwitch = document.querySelectorAll('svg');
+const sandwich = document.querySelectorAll('svg');
 const html = document.documentElement;
 
 /**
  * Toggle dark mode
  */
-const toggletheme = () => {
-    html.classList.toggletheme('dark');
+const toggleTheme = () => {
+    html.classList.toggle('dark');
     updateThemeToggle();
 };
 
@@ -38,14 +38,14 @@ const setView = (v) => {
  */
 const toggleMenu = (hide) => {
     if (!hide) {
-        ddMenu.classList.toggletheme('hidden');
-        document.querySelectorAll('svg').forEach((el) => {
-            el.classList.toggletheme('hidden');
+        ddMenu.classList.toggle('hidden');
+        sandwich.forEach((el) => {
+            el.classList.toggle('hidden');
         });
     } else {
         ddMenu.classList.add('hidden');
-        document.querySelectorAll('svg')[0].classList.remove('hidden');
-        document.querySelectorAll('svg')[1].classList.add('hidden');
+        sandwich[0].classList.remove('hidden');
+        sandwich[1].classList.add('hidden');
     }
 };
 
@@ -94,9 +94,6 @@ const addButtons = (container, nums) => {
  * Handle button click events
  * @param {Event} event - The click event
  */
-
-
-// kk
 const click = (event) => {
     const monitor = document.getElementById('monitor');
     const bac = monitor.innerText.trim();
@@ -153,8 +150,8 @@ const renderMenu = () => {
 const updateThemeToggle = () => {
     const isDark = html.classList.contains('dark');
     document.getElementById('theme-toggle').innerHTML = isDark ?
-        '<button onclick="toggletheme()">Light</button>' :
-        '<button onclick="toggletheme()">Dark</button>';
+        '<button onclick="toggleTheme()">Light</button>' :
+        '<button onclick="toggleTheme()">Dark</button>';
 };
 
 /**
