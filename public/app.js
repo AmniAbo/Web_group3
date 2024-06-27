@@ -1,18 +1,18 @@
 /**
  * Select important DOM elements
  */
-const header = document.querySelector('h1');
-const app = document.getElementById('app');
-const ddMenu = document.querySelector('#ddMenu');
-const sandwich = document.querySelectorAll('svg');
-const html = document.documentElement;
+const header = document.querySelector('#header'); // Select header element
+const app = document.getElementById('app'); // Select app container
+const ddMenu = document.querySelector('#ddMenu'); // Select dropdown menu container
+const sandwich = document.querySelectorAll('svg'); // Select sandwich menu icons
+const html = document.documentElement; // Select HTML element
 
 /**
  * Toggle dark mode
  */
 const toggleTheme = () => {
-    html.classList.toggleTheme('dark');
-    updateThemeToggle();
+    html.classList.toggle('dark'); // Toggle dark mode class on HTML element
+    updateThemeToggle(); // Update theme toggle button
 };
 
 /**
@@ -20,9 +20,10 @@ const toggleTheme = () => {
  * @param {string} v - The view to be displayed
  */
 const setView = (v) => {
-    header.innerText = v;
-    toggleMenu(true);
+    header.innerText = v; // Set header text to the selected view
+    toggleMenu(true); // Hide the mobile menu
 
+    // Render content based on the selected view
     if (v === 'Calculator') {
         renderCalculator();
     } else if (v === 'About') {
@@ -38,14 +39,14 @@ const setView = (v) => {
  */
 const toggleMenu = (hide) => {
     if (!hide) {
-        ddMenu.classList.toggleTheme('hidden');
-        sandwich.forEach((el) => {
-            el.classList.toggleTheme('hidden');
+        ddMenu.classList.toggle('hidden'); // Toggle visibility of dropdown menu
+        document.querySelectorAll('svg').forEach((el) => {
+            el.classList.toggle('hidden'); // Toggle visibility of sandwich menu icons
         });
     } else {
-        ddMenu.classList.add('hidden');
-        sandwich[0].classList.remove('hidden');
-        sandwich[1].classList.add('hidden');
+        ddMenu.classList.add('hidden'); // Hide dropdown menu
+        document.querySelectorAll('svg')[0].classList.remove('hidden'); // Show first sandwich icon
+        document.querySelectorAll('svg')[1].classList.add('hidden'); // Hide second sandwich icon
     }
 };
 
@@ -55,8 +56,8 @@ const toggleMenu = (hide) => {
  * @param {string} content - The content of the row
  */
 const addRow = (container, content) => {
-    const row = `<div class='grid grid-cols-5 gap-2'>${content}</div>`;
-    container.insertAdjacentHTML('beforeend', row);
+    const row = `<div class='grid grid-cols-5 gap-2'>${content}</div>`; // Create row HTML
+    container.insertAdjacentHTML('beforeend', row); // Add row to container
 };
 
 /**
@@ -65,9 +66,9 @@ const addRow = (container, content) => {
  * @param {string} [text] - Optional text for the monitor
  */
 const addMonitor = (container, text) => {
-    const t = text ?? '';
-    const monitor = `<div id='monitor' class="bg-white dark:bg-gray-800 border-4 border-blue-400 dark:border-gray-600 h-20 flex items-center col-span-5 text-blue-800 dark:text-white p-2 rounded-lg mb-2 font-bold text-4xl">${t}</div>`;
-    container.insertAdjacentHTML('beforeend', monitor);
+    const t = text ?? ''; // Default text to empty if not provided
+    const monitor = `<div id='monitor' class="bg-white dark:bg-gray-800 border-4 border-blue-400 dark:border-gray-600 h-20 flex items-center col-span-5 text-blue-800 dark:text-white p-2 rounded-lg mb-2 font-bold text-4xl">${t}</div>`; // Monitor HTML
+    container.insertAdjacentHTML('beforeend', monitor); // Add monitor to container
 };
 
 /**
@@ -76,8 +77,8 @@ const addMonitor = (container, text) => {
  * @returns {string} - The HTML string for the button
  */
 const button = (text) => {
-    const c = text === 'calculate' ? 'col-span-4' : '';
-    return `<div class='bg-blue-400 dark:bg-gray-700 dark:hover:bg-gray-600 hover:bg-blue-600 text-white ${c} py-1 rounded-md text-center text-lg font-bold cursor-pointer d-btn'>${text}</div>`;
+    const c = text === 'calculate' ? 'col-span-4' : ''; // Conditionally set column span
+    return `<div class='bg-blue-400 dark:bg-gray-700 dark:hover:bg-gray-600 hover:bg-blue-600 text-white ${c} py-1 rounded-md text-center text-lg font-bold cursor-pointer d-btn'>${text}</div>`; // Button HTML
 };
 
 /**
@@ -86,8 +87,8 @@ const button = (text) => {
  * @param {string[]} nums - The array of button texts
  */
 const addButtons = (container, nums) => {
-    const btnHTML = nums.map((n) => button(n)).join('');
-    addRow(container, btnHTML);
+    const btnHTML = nums.map((n) => button(n)).join(''); // Generate button HTML
+    addRow(container, btnHTML); // Add buttons row to container
 };
 
 /**
@@ -95,16 +96,20 @@ const addButtons = (container, nums) => {
  * @param {Event} event - The click event
  */
 const click = (event) => {
-    const monitor = document.getElementById('monitor');
-    const bac = monitor.innerText.trim();
-    const a = event.target.innerText;
-    console.log(a);
+    const monitor = document.getElementById('monitor'); // Select monitor element
+    const bac = monitor.innerText.trim(); // Get monitor text
+    const a = event.target.innerText; // Get clicked button text
+    
     if (a === 'clear') {
-        monitor.innerText = '';
+        monitor.innerText = ''; // Clear monitor text
     } else if (a === 'calculate') {
-        monitor.innerText = bac + '=' + eval(bac);
+        try {
+            monitor.innerText = `${bac} = ${eval(bac)}`; // Calculate and display result
+        } catch (error) {
+            monitor.innerText = 'Error'; // Display error if calculation fails
+        }
     } else {
-        monitor.innerText += a;
+        monitor.innerText += a; // Append button text to monitor
     }
 };
 
@@ -112,56 +117,56 @@ const click = (event) => {
  * Render the calculator view
  */
 const renderCalculator = () => {
-    const labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '+', '-', '*', '/', '**', 'calculate', 'clear'];
-    app.innerHTML = '';
-    addMonitor(app);
-    addButtons(app, labels);
-    const buttons = document.querySelectorAll('.d-btn');
-    buttons.forEach((el) => el.addEventListener('click', click));
+    const labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '+', '-', '*', '/', '**', 'calculate', 'clear']; // Button labels
+    app.innerHTML = ''; // Clear app container
+    addMonitor(app); // Add monitor to app container
+    addButtons(app, labels); // Add buttons to app container
+    const buttons = document.querySelectorAll('.d-btn'); // Select all buttons
+    buttons.forEach((el) => el.addEventListener('click', click)); // Add click event listener to buttons
 };
 
 /**
  * Render the about view
  */
 const renderAbout = () => {
-    app.innerHTML = '<div class="p-4 h-[200px] flex items-center justify-center">Temp for About</div>';
+    app.innerHTML = '<div class="p-4 h-[200px] flex items-center justify-center">Temp for About</div>'; // Render about view content
 };
 
 /**
  * Render the contact view
  */
 const renderContact = () => {
-    app.innerHTML = '<div class="p-4 h-[200px] flex items-center justify-center">Temp for Contact</div>';
+    app.innerHTML = '<div class="p-4 h-[200px] flex items-center justify-center">Temp for Contact</div>'; // Render contact view content
 };
 
 /**
  * Render the top menu
  */
 const renderMenu = () => {
-    const menuItems = ['Calculator', 'About', 'Contact'];
-    const menuHtml = menuItems.map(item => `<button onclick="setView('${item}')">${item}</button>`).join('');
-    document.getElementById('nav-links').innerHTML = menuHtml;
-    ddMenu.innerHTML = menuHtml;
+    const menuItems = ['Calculator', 'About', 'Contact']; // Menu items array
+    const menuHtml = menuItems.map(item => `<button onclick="setView('${item}')">${item}</button>`).join(''); // Generate menu HTML
+    document.getElementById('nav-links').innerHTML = menuHtml; // Add menu HTML to top menu
+    ddMenu.innerHTML = menuHtml; // Add menu HTML to dropdown menu
 };
 
 /**
  * Update the theme toggle button based on the current theme
  */
 const updateThemeToggle = () => {
-    const isDark = html.classList.contains('dark');
+    const isDark = html.classList.contains('dark'); // Check if dark mode is enabled
     document.getElementById('theme-toggle').innerHTML = isDark ?
         '<button onclick="toggleTheme()">Light</button>' :
-        '<button onclick="toggleTheme()">Dark</button>';
+        '<button onclick="toggleTheme()">Dark</button>'; // Update theme toggle button
 };
 
 /**
  * Render the theme toggle button
  */
 const renderThemeToggle = () => {
-    updateThemeToggle();
+    updateThemeToggle(); // Update theme toggle button
 };
 
 // Initialize the app by rendering the menu, theme toggle button, and calculator view
-renderMenu();
-renderThemeToggle();
-renderCalculator();
+renderMenu(); // Render top menu
+renderThemeToggle(); // Render theme toggle button
+renderCalculator(); // Render calculator view
