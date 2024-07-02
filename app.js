@@ -10,12 +10,8 @@ const html = document.documentElement; // Select HTML element
 /**
  * Toggle dark mode
  */
-<<<<<<< HEAD
 const toggletheme = () => {
-=======
-const toggle = () => {
->>>>>>> d9bf05fc2d1bc4f2955c86df588da6c601821413
-    html.classList.toggle('dark'); // Toggle dark mode class on HTML element
+    html.classList.toggletheme('dark'); // Toggle dark mode class on HTML element
     updateThemeToggle(); // Update theme toggle button
 };
 
@@ -43,15 +39,9 @@ const setView = (v) => {
  */
 const toggleMenu = (hide) => {
     if (!hide) {
-<<<<<<< HEAD
         ddMenu.classList.toggletheme('hidden'); // Toggle visibility of dropdown menu
         document.querySelectorAll('svg').forEach((el) => {
             el.classList.toggletheme('hidden'); // Toggle visibility of sandwich menu icons
-=======
-        ddMenu.classList.toggle('hidden'); // Toggle visibility of dropdown menu
-        document.querySelectorAll('svg').forEach((el) => {
-            el.classList.toggle('hidden'); // Toggle visibility of sandwich menu icons
->>>>>>> d9bf05fc2d1bc4f2955c86df588da6c601821413
         });
     } else {
         ddMenu.classList.add('hidden'); // Hide dropdown menu
@@ -165,13 +155,8 @@ const renderMenu = () => {
 const updateThemeToggle = () => {
     const isDark = html.classList.contains('dark'); // Check if dark mode is enabled
     document.getElementById('theme-toggle').innerHTML = isDark ?
-<<<<<<< HEAD
         '<button onclick="toggletheme()">Light</button>' :
         '<button onclick="toggletheme()">Dark</button>'; // Update theme toggle button
-=======
-        '<button onclick="toggle()">Light</button>' :
-        '<button onclick="toggle()">Dark</button>'; // Update theme toggle button
->>>>>>> d9bf05fc2d1bc4f2955c86df588da6c601821413
 };
 
 /**
@@ -184,8 +169,4 @@ const renderThemeToggle = () => {
 // Initialize the app by rendering the menu, theme toggle button, and calculator view
 renderMenu(); // Render top menu
 renderThemeToggle(); // Render theme toggle button
-<<<<<<< HEAD
 renderCalculator(); // Render calculator view
-=======
-renderCalculator(); // Render calculator view
->>>>>>> d9bf05fc2d1bc4f2955c86df588da6c601821413
