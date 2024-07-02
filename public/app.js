@@ -39,14 +39,14 @@ const setView = (v) => {
  */
 const toggleMenu = (hide) => {
     if (!hide) {
-        ddMenu.classList.toggletheme('hidden'); // Toggle visibility of dropdown menu
+        ddMenu.classList.toggle('hidden'); // Corrected: toggle instead of toggletheme
         document.querySelectorAll('svg').forEach((el) => {
-            el.classList.toggletheme('hidden'); // Toggle visibility of sandwich menu icons
+            el.classList.toggle('hidden'); // Corrected: toggle instead of toggletheme
         });
     } else {
-        ddMenu.classList.add('hidden'); // Hide dropdown menu
-        document.querySelectorAll('svg')[0].classList.remove('hidden'); // Show first sandwich icon
-        document.querySelectorAll('svg')[1].classList.add('hidden'); // Hide second sandwich icon
+        ddMenu.classList.add('hidden');
+        document.querySelectorAll('svg')[0].classList.remove('hidden');
+        document.querySelectorAll('svg')[1].classList.add('hidden');
     }
 };
 
@@ -104,7 +104,7 @@ const click = (event) => {
         monitor.innerText = ''; // Clear monitor text
     } else if (a === 'calculate') {
         try {
-            monitor.innerText = `${bac} = ${eval(bac)}`; // Calculate and display result
+            monitor.innerText = `${bac} = ${eval(bac.replace('^', '**'))}`; // Ensure ^ is replaced with **
         } catch (error) {
             monitor.innerText = 'Error'; // Display error if calculation fails
         }
