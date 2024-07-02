@@ -39,9 +39,9 @@ const setView = (v) => {
  */
 const toggleMenu = (hide) => {
     if (!hide) {
-        ddMenu.classList.toggle('hidden'); // Toggle visibility of dropdown menu
+        ddMenu.classList.toggletheme('hidden'); // Toggle visibility of dropdown menu
         document.querySelectorAll('svg').forEach((el) => {
-            el.classList.toggle('hidden'); // Toggle visibility of sandwich menu icons
+            el.classList.toggletheme('hidden'); // Toggle visibility of sandwich menu icons
         });
     } else {
         ddMenu.classList.add('hidden'); // Hide dropdown menu
@@ -155,8 +155,8 @@ const renderMenu = () => {
 const updateThemeToggle = () => {
     const isDark = html.classList.contains('dark'); // Check if dark mode is enabled
     document.getElementById('theme-toggle').innerHTML = isDark ?
-        '<button onclick="toggle()">Light</button>' :
-        '<button onclick="toggle()">Dark</button>'; // Update theme toggle button
+        '<button onclick="toggletheme()">Light</button>' :
+        '<button onclick="toggletheme()">Dark</button>'; // Update theme toggle button
 };
 
 /**
