@@ -4,7 +4,6 @@
 const header = document.querySelector('#header'); // Select header element
 const app = document.getElementById('app'); // Select app container
 const ddMenu = document.querySelector('#ddMenu'); // Select dropdown menu container
-const sandwich = document.querySelectorAll('svg'); // Select sandwich menu icons
 const html = document.documentElement; // Select HTML element
 
 /**
