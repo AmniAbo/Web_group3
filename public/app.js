@@ -11,7 +11,7 @@ const html = document.documentElement; // Select HTML element
  * Toggle dark mode
  */
 const toggletheme = () => {
-    html.classList.toggle('dark'); // Toggle dark mode class on HTML element
+    html.classList.toggletheme('dark'); // Toggle dark mode class on HTML element
     updateThemeToggle(); // Update theme toggle button
 };
 
