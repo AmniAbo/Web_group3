@@ -38,9 +38,9 @@ const setView = (v) => {
  */
 const toggleMenu = (hide) => {
     if (!hide) {
-        ddMenu.classList.toggle('hidden'); // Corrected: toggle instead of toggletheme
+        ddMenu.classList.toggletheme('hidden'); // Corrected: toggle instead of toggletheme
         document.querySelectorAll('svg').forEach((el) => {
-            el.classList.toggle('hidden'); // Corrected: toggle instead of toggletheme
+            el.classList.toggletheme('hidden'); // Corrected: toggle instead of toggletheme
         });
     } else {
         ddMenu.classList.add('hidden');
