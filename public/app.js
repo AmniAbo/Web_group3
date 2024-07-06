@@ -13,6 +13,7 @@ const toggletheme = () => {
     html.classList.toggle('dark'); // Toggle dark mode class on HTML element
     updateThemeToggle(); // Update theme toggle button
 };
+window.toggletheme = toggletheme; // Make function globally accessible
 
 /**
  * Set the current view and render the appropriate content
@@ -31,6 +32,7 @@ const setView = (v) => {
         renderContact();
     }
 };
+window.setView = setView; // Make function globally accessible
 
 /**
  * Toggle the visibility of the mobile menu
@@ -38,9 +40,9 @@ const setView = (v) => {
  */
 const toggleMenu = (hide) => {
     if (!hide) {
-        ddMenu.classList.toggletheme('hidden'); // Corrected: toggle instead of toggletheme
+        ddMenu.classList.toggle('hidden'); // Corrected: toggle instead of toggletheme
         document.querySelectorAll('svg').forEach((el) => {
-            el.classList.toggletheme('hidden'); // Corrected: toggle instead of toggletheme
+            el.classList.toggle('hidden'); // Corrected: toggle instead of toggletheme
         });
     } else {
         ddMenu.classList.add('hidden');
