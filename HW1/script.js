@@ -1,4 +1,5 @@
 // Check if fakeUsers is already set in localStorage, if not, initialize it with default users
+console.log('Script loaded');
 if (!localStorage.getItem('fakeUsers')) {
     const data = [
         { id: 1, email: 'user1@example.com', password: 'password1' },
