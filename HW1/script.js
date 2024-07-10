@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             sessionStorage.setItem('userEmail', user.email);
     
             // Redirect to the dashboard
-            window.location.href = 'dashboard.html';
+            window.location.href = '../dashboard.html';
         } else {
             console.log('Login failed: User not found or invalid credentials');
             showAlert('User not found or invalid credentials. Please try again.', 'error');
