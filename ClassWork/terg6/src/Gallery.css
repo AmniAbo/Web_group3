@@ -1,0 +1,43 @@
+body {
+    background-image: url('Background_img/black_background.jpg');
+}
+
+.main-image {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-repeat: repeat;
+    background-image: url('Background_img/bricks.jpg');
+
+
+}
+
+.main-image img {
+    border: 5px solid #808080;
+    box-shadow: 0 10px 20px rgba(0, 0.2, 0, 0.2);
+    border-radius: 10px;
+}
+
+
+.thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.thumbnails img {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.thumbnails img:hover {
+    transform: scale(1.1);
+}
+
+.thumbnails .selected {
+    border: 2px solid #f2f2f268;
+    
+}
+.thumbnails img{
+    border-radius: 10px;
+}
