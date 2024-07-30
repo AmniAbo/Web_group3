@@ -13,7 +13,7 @@ export function App() {
     return (
         <MarketContext.Provider value={{ state, dispatch }}>
             <MainLayout>
-                {state.selectedCoin ? <CoinCard /> : <Market />}
+                {state.selectedCoin ? <coinCard /> : <market />}
                 <ImageGallery /> {/* Add the ImageGallery component */}
             </MainLayout>
         </MarketContext.Provider>
