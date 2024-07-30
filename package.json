@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@preact/compat": "^17.1.2",
+    "preact": "^10.23.1"
+  }
+}
