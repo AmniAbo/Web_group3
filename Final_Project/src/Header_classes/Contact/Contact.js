@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-/*Centered on the page is a contact section with essential information for getting in touch with the support team.*/
+
+/* Centered on the page is a contact section with essential information for getting in touch with the support team. */
 const Contact = () => {
-    // State to track whether dark mode is enabled
+  // State to track whether dark mode is enabled
   const [isDarkMode, setIsDarkMode] = useState(() => {
-        // Initialize state from localStorage, defaulting to false if not found
+    // Initialize state from localStorage, defaulting to false if not found
     return JSON.parse(localStorage.getItem('darkMode')) || false;
   });
-  // Effect to apply or remove dark mode classes on the document element based on the current state
 
+  // State to store the contact page HTML content
+  const [content, setContent] = useState('');
+
+  // Effect to apply or remove dark mode classes on the document element based on the current state
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
@@ -16,18 +20,18 @@ const Contact = () => {
       document.documentElement.classList.remove('dark');
     }
   }, [isDarkMode]);
-  // Effect to fetch and set the contact page HTML content (assuming it's stored separately)
 
+  // Effect to fetch and set the contact page HTML content (assuming it's stored separately)
   useEffect(() => {
     fetch('/contact.html')
       .then(response => response.text())
       .then(html => setContent(html))
       .catch(err => console.error('Failed to load HTML:', err));
   }, []);
-    // Function to toggle dark mode and save the preference to localStorage
 
+  // Function to toggle dark mode and save the preference to localStorage
   const toggleDarkMode = () => {
-    setIsDarkMode((prevMode) => {
+    setIsDarkMode(prevMode => {
       const newMode = !prevMode;
       localStorage.setItem('darkMode', JSON.stringify(newMode));
       return newMode;
@@ -45,14 +49,13 @@ const Contact = () => {
             <Link to="/features" className="text-white hover:text-gray-900">About</Link>
             <Link to="/login" className="text-white hover:text-gray-900">Login</Link>
             <Link to="/signup" className="text-white hover:text-gray-300">Sign Up</Link>
-
           </nav>
           <button 
-              onClick={toggleDarkMode} 
-              className="p-2 text-white bg-gray-800 rounded-full"
-              aria-label="Toggle dark mode"
-            >
-              {isDarkMode ? '🌙' : '☀️'}
+            onClick={toggleDarkMode} 
+            className="p-2 text-white bg-gray-800 rounded-full"
+            aria-label="Toggle dark mode"
+          >
+            {isDarkMode ? '🌙' : '☀️'}
           </button>
         </div>
       </header>
