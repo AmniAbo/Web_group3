@@ -3,31 +3,33 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@tippyjs/react": "^4.2.6",
-    "chart.js": "^4.4.3",
-    "firebase": "^10.12.4",
-    "jspdf": "^2.5.1",
-    "react": "^18.3.1",
-    "react-chartjs-2": "^5.2.0",
-    "react-dom": "^18.3.1",
-    "react-icons": "^5.3.0",
-    "react-router-dom": "^6.25.1",
-    "react-scripts": "^5.0.1",
-    "react-slick": "^0.30.2",
-    "slick-carousel": "^1.8.1",
-    "swiper": "^11.1.11",
-    "tippy.js": "^6.3.7",
-    "uid": "^2.0.2",
-    "web-vitals": "^2.1.4"
+    "@testing-library/jest-dom": "^6.0.0",           // Updated version
+    "@testing-library/react": "^14.0.0",             // Updated version
+    "@testing-library/user-event": "^14.0.0",        // Updated version
+    "@tippyjs/react": "^5.0.0",                      // Updated version
+    "chart.js": "^4.5.0",                            // Updated version
+    "firebase": "^10.15.0",                          // Updated version
+    "jspdf": "^2.5.1",                               // Same version as provided
+    "react": "^18.3.1",                              // Same version as provided
+    "react-chartjs-2": "^5.3.0",                     // Updated version
+    "react-dom": "^18.3.1",                          // Same version as provided
+    "react-icons": "^5.4.0",                         // Updated version
+    "react-router-dom": "^6.26.0",                   // Updated version
+    "react-scripts": "^5.0.1",                       // Same version as provided
+    "react-slick": "^0.30.3",                        // Updated version
+    "slick-carousel": "^1.8.1",                      // Same version as provided
+    "swiper": "^11.2.0",                             // Updated version
+    "tippy.js": "^6.3.7",                            // Same version as provided
+    "uid": "^2.0.2",                                 // Same version as provided
+    "web-vitals": "^3.1.0"                           // Updated version
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",                    // Added for deployment
+    "deploy": "gh-pages -d build"                    // Added for GitHub Pages deployment
   },
   "eslintConfig": {
     "extends": [
@@ -48,7 +50,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "tailwindcss": "^3.4.6"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11", // Same version as provided
+    "tailwindcss": "^3.4.7"                                          // Updated version
   }
 }
